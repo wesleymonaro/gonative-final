@@ -8,14 +8,14 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
 
 
-export default class HeaderRight extends Component {
+export default class HeaderLeft extends Component {
   static propTypes = {
     navigation: PropTypes.shape({
       dispatch: PropTypes.func,
     }).isRequired,
   }
 
-  goToSearch = async () => {
+  openMenu = async () => {
     // await AsyncStorage.clear();
 
     // const resetAction = NavigationActions.reset({
@@ -25,15 +25,15 @@ export default class HeaderRight extends Component {
     //   ],
     // });
 
-    const { navigation } = this.props;
+    // const { navigation } = this.props;
 
-    navigation.navigate('SearchGames');
+    // navigation.navigate('SearchGames');
   }
 
   render() {
     return (
-      <TouchableOpacity onPress={this.goToSearch}>
-        <Icon name="search" size={16} style={styles.icon} />
+      <TouchableOpacity onPress={this.openMenu}>
+        <Icon name="navicon" size={16} style={styles.icon} />
       </TouchableOpacity>
     );
   }

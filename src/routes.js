@@ -7,11 +7,30 @@ import HeaderRight from 'components/HeaderRight';
 // pages
 import Home from 'pages/home';
 import SelectPlatforms from 'pages/selectPlatforms';
-// import Organizations from 'pages/organizations';
+import SearchGames from 'pages/searchGames';
+import GameDetail from './pages/gameDetail';
 
 const createNavigator = (hasPlatforms = false) => StackNavigator({
-  Home: { screen: Home },
+  Home: {
+    screen: Home,
+    // navigationOptions: ({ navigation }) => ({
+    //   headerStyle: {
+    //     paddingHorizontal: metrics.basePadding,
+    //   },
+    //   headerRight: <HeaderRight navigation={navigation} />,
+    // }),
+  },
   SelectPlatforms: { screen: SelectPlatforms },
+  SearchGames: {
+    screen: SearchGames,
+    // navigationOptions: {
+    //   title: 'Pesquisar jogos',
+    //   headerBackTitle: null,
+    // },
+  },
+  GameDetail: {
+    screen: GameDetail,
+  },
   // User: {
   //   screen: TabNavigator({
   //     Repositories: { screen: Repositories },
@@ -30,13 +49,13 @@ const createNavigator = (hasPlatforms = false) => StackNavigator({
   //   }),
   // },
 }, {
-  initialRouteName: hasPlatforms ? 'Home' : 'SelectPlatforms',
-  navigationOptions: ({ navigation }) => ({
-    headerStyle: {
-      paddingHorizontal: metrics.basePadding,
-    },
-    headerRight: <HeaderRight navigation={navigation} />,
-  }),
+  initialRouteName: hasPlatforms ? 'SearchGames' : 'SelectPlatforms',
+  // navigationOptions: ({ navigation }) => ({
+  //   headerStyle: {
+  //     paddingHorizontal: metrics.basePadding,
+  //   },
+  //   headerRight: <HeaderRight navigation={navigation} />,
+  // }),
 });
 
 export default createNavigator;
