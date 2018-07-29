@@ -8,7 +8,9 @@ import HeaderRight from 'components/HeaderRight';
 import Home from 'pages/home';
 import SelectPlatforms from 'pages/selectPlatforms';
 import SearchGames from 'pages/searchGames';
-import GameDetail from './pages/gameDetail';
+// import GameDetail from './pages/gameDetail';
+import GameDetails from './pages/gameDetails';
+import GameAbout from './pages/gameAbout';
 
 const createNavigator = (hasPlatforms = false) => StackNavigator({
   Home: {
@@ -29,27 +31,25 @@ const createNavigator = (hasPlatforms = false) => StackNavigator({
     // },
   },
   GameDetail: {
-    screen: GameDetail,
+    screen: TabNavigator({
+      About: { screen: GameAbout },
+      Details: { screen: GameDetails },
+    },
+    {
+      tabBarPosition: 'bottom',
+      tabBarOptions: {
+        showIcon: false,
+        showLabel: true,
+        activeTintColor: colors.white,
+        inactiveTintColor: colors.whiteTransparent,
+        style: {
+          backgroundColor: colors.primary,
+        },
+      },
+    }),
   },
-  // User: {
-  //   screen: TabNavigator({
-  //     Repositories: { screen: Repositories },
-  //     Organizations: { screen: Organizations },
-  //   }, {
-  //     tabBarPosition: 'bottom',
-  //     tabBarOptions: {
-  //       showIcon: true,
-  //       showLabel: false,
-  //       activeTintColor: colors.white,
-  //       inactiveTintColor: colors.whiteTransparent,
-  //       style: {
-  //         backgroundColor: colors.secundary,
-  //       },
-  //     },
-  //   }),
-  // },
 }, {
-  initialRouteName: hasPlatforms ? 'SearchGames' : 'SelectPlatforms',
+  initialRouteName: hasPlatforms ? 'GameDetail' : 'SelectPlatforms',
   // navigationOptions: ({ navigation }) => ({
   //   headerStyle: {
   //     paddingHorizontal: metrics.basePadding,
